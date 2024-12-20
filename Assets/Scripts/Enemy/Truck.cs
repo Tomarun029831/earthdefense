@@ -18,7 +18,6 @@ public class Truck : Base_Enemy
     // action
     public float action_interval;
     public float action_range;
-    private float absorbableSqrDistance;
 
     // time
     private float time;
@@ -34,7 +33,6 @@ public class Truck : Base_Enemy
 
     void Start()
     {
-        absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
     void Update()
@@ -43,7 +41,7 @@ public class Truck : Base_Enemy
         if (time >= action_interval)
         {
             // null => Find() に変更
-            Action(null);
+            Action(Find());
             time = 0;
         }
         if (current_health <= 0)
@@ -84,18 +82,14 @@ public class Truck : Base_Enemy
 
     public override Base_Tower Find()
     {
-        Base_Tower target = null;
-        float targetPathPos = 0;
-        for (int i = 0; i < gameManager.enemyParent.childCount; i++)
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach (GameObject tower in towers)
         {
-            Transform enemy = gameManager.enemyParent.GetChild(i);
-            float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
-            if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
+            if (Vector3.SqrMagnitude(tower.transform.position - transform.position) <= Mathf.Pow(action_range, 2))
             {
-                target = enemy.GetComponent<Base_Tower>();
-                targetPathPos = enemyPathPos;
+                return tower.GetComponent<Base_Tower>();
             }
         }
-        return target;
+        return null;
     }
 }

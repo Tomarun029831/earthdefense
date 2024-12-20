@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 41456162}
   - component: {fileID: 41456163}
   m_Layer: 0
-  m_Name: Path_L
+  m_Name: Path_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 651015359}
   - component: {fileID: 651015360}
   m_Layer: 0
-  m_Name: Path_M
+  m_Name: Path_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -952,8 +952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890b5577888102f42a5229f6a46904b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn_interval: 1e+14
-  enemyPath: Assets/Resources/Models
+  spawn_interval: 5
+  enemyPath: Models
 --- !u!1 &1265307602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 1974422806}
   - component: {fileID: 1974422807}
   m_Layer: 0
-  m_Name: Path_R
+  m_Name: Path_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

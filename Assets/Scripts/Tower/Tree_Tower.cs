@@ -49,7 +49,7 @@ public class Tree_Tower : Base_Tower
         if (time >= action_interval)
         {
             // null => Find() に変更
-            Action(null);
+            Action(Find());
             time = 0;
         }
         if (current_health <= 0)

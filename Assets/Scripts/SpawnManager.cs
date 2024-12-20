@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class SpawnManager : MonoBehaviour
             Quaternion.identity,
             enemyParent
          );
+        enemy.AddComponent<CinemachineDollyCart>().m_Path = GameObject.Find("Path_" + Random.Range(0, 2)).GetComponent<CinemachinePath>();
+        enemy.GetComponent<CinemachineDollyCart>().m_Speed = Random.Range(1, 3);
         enemy.GetComponent<Truck>().target = GameObject.Find("Tree_Tower").GetComponent<Tree_Tower>();
     }
 }
