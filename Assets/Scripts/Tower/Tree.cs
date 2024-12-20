@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Tree : Base_Tower
 {
-    // Start is called before the first frame update
+    public float health;
+    public float damage;
+    public float action_interval;
+    public float action_range;
+
     void Start()
     {
         // Treeの初期化コード
@@ -14,18 +18,16 @@ public class Tree : Base_Tower
     // Update is called once per frame
     void Update()
     {
-        // Treeの更新処理
-        // 例えば、毎フレーム行うアクションがあればここに書く
-        Debug.Log("Tree Tower Updated");
+
     }
 
-    // Base_Tower から継承した抽象メソッドを実装
 
-    public override void Action() // attack enemy
+
+    public override void Action(GameObject _target) // attack enemy
     {
         Debug.Log("Tree Tower is performing an action");
 
-        // Co2 を生成してそれを吸収する処理
+        // Co2 を吸収する処理
     }
 
     public override void TakeDamage(float damage)
