@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Tree_Tower : Base_Tower
@@ -109,17 +110,17 @@ public class Tree_Tower : Base_Tower
     public override Base_Enemy Find()
     {
         Base_Enemy target = null;
-        // float targetPathPos = 0;
-        // for (int i = 0; i < gameManager.enemyParent.childCount; i++)
-        // {
-        //     Transform enemy = gameManager.enemyParent.GetChild(i);
-        //     float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
-        //     if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
-        //     {
-        //         target = enemy.GetComponent<Base_Enemy>();
-        //         targetPathPos = enemyPathPos;
-        //     }
-        // }
+        float targetPathPos = 0;
+        for (int i = 0; i < gameManager.enemyParent.childCount; i++)
+        {
+            Transform enemy = gameManager.enemyParent.GetChild(i);
+            float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
+            if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
+            {
+                target = enemy.GetComponent<Base_Enemy>();
+                targetPathPos = enemyPathPos;
+            }
+        }
         return target;
     }
 }
