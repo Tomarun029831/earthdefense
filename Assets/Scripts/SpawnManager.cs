@@ -57,7 +57,5 @@ public class SpawnManager : MonoBehaviour
             Quaternion.identity,
             enemyParent
          );
-        enemy.AddComponent<CinemachineDollyCart>().m_Path = GameObject.Find("Path_" + Random.Range(0, 2)).GetComponent<CinemachinePath>();
-        enemy.GetComponent<CinemachineDollyCart>().m_Speed = Random.Range(1, 3);
     }
 }

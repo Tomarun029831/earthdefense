@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private float time;
 
     // spawn
-    public float spawn_interval;
     private SpawnManager spawnManager;
 
     void Awake()
@@ -39,15 +38,30 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time >= phase_interval && current_phase > 0)
+        if (current_phase == 0) // zero phase is preparation phase
         {
-            NextPhase();
-            time = 0;
+            if (time >= preparation_time)
+            {
+                NextPhase();
+                time = 0;
+            }
         }
-        else if (time >= preparation_time && current_phase == 0)
+        else
+        {
+            if (time >= phase_interval) // phase interval
+            {
+                NextPhase();
+                time = 0;
+            }
+        }
+    }
+
+    [ContextMenu("Skip Preparation")]
+    void SkipPreparation()
+    {
+        if (current_phase == 0)
         {
             NextPhase();
-            time = 0;
         }
     }
 

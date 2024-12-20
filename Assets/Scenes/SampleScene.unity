@@ -1575,11 +1575,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93d555f3c8eeff4da4e268f8f16be17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyParent: {fileID: 0}
+  enemyParent: {fileID: 2036325611}
   current_phase: 0
   max_phase: 2
-  phase_interval: 2
-  preparation_time: 5
+  phase_interval: 135
+  preparation_time: 30
   spawn_interval: 0
 --- !u!1 &1415095531
 GameObject:
