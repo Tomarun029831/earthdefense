@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Tree : Base_Tower
 {
+    public float max_health;
+    public float max_damage;
+
     public float health;
+
     public float damage;
     public float action_interval;
     public float action_range;
@@ -21,13 +25,13 @@ public class Tree : Base_Tower
 
     }
 
-
-
-    public override void Action(GameObject _target) // attack enemy
+    public override void Action(Base_Enemy _target) // attack enemy
     {
-        Debug.Log("Tree Tower is performing an action");
+        Debug.Log("Tree is attacking to " + _target.name);
 
         // Co2 を吸収する処理
+        _target.TakeDamage(damage);
+        health += 1;
     }
 
     public override void TakeDamage(float damage)

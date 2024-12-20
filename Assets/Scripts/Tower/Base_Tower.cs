@@ -9,7 +9,7 @@ abstract public class Base_Tower : MonoBehaviour
     // public float action_interval;
     // public float action_range;
 
-    abstract public void Action(GameObject _target); // attack, buff, debuff, etc.
+    abstract public void Action(Base_Enemy _target); // attack, buff, debuff, etc.
     abstract public void TakeDamage(float damage); // take damage
 
     abstract public void Upgrade(); // upgrade tower

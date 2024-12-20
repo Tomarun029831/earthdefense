@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Truck : Base_Enemy
 {
-    public override void Action()
+    public override void Action(Base_Tower _tower)
     {
 
     }
