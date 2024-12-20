@@ -25,6 +25,14 @@ public class Tree_Tower : Base_Tower
     // time
     private float time = 0;
 
+    // game manager
+    private GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     void Start()
     {
         // Treeの初期化コード
@@ -90,5 +98,22 @@ public class Tree_Tower : Base_Tower
         // Treeタワーが倒れた時の処理を実装
         // Debug.Log("Tree Tower has been destroyed");
         Destroy(gameObject);
+    }
+
+    private Base_Enemy Find()
+    {
+        Base_Enemy target = null;
+        float targetPathPos = 0;
+        for (int i = 0; i < gameManager.enemyParent.childCount; i++)
+        {
+            Transform enemy = gameManager.enemyParent.GetChild(i);
+            float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
+            if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
+            {
+                target = enemy.GetComponent<Base_Enemy>();
+                targetPathPos = enemyPathPos;
+            }
+        }
+        return target;
     }
 }
