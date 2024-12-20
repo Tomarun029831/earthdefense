@@ -20,13 +20,14 @@ public class Truck : Base_Enemy
     private float absorbableSqrDistance;
 
     // time
-    private float time = 0;
+    private float time;
 
     // game manager
     private GameManager gameManager;
 
     void Awake()
     {
+        time = 0;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
