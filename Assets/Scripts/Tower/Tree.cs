@@ -31,7 +31,6 @@ public class Tree : Base_Tower
         // Debug.Log("Tree Tower Initialized");
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
