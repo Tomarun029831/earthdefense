@@ -17,13 +17,22 @@ public class Truck : Base_Enemy
     // action
     public float action_interval;
     public float action_range;
+    private float absorbableSqrDistance;
 
     // time
     private float time = 0;
 
+    // game manager
+    private GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     void Start()
     {
-
+        absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
     void Update()

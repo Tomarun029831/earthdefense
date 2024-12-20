@@ -18,6 +18,7 @@ public class Tree_Tower : Base_Tower
     // action
     public float action_interval;
     public float action_range;
+    private float absorbableSqrDistance;
 
     // level
     public int level;
@@ -37,6 +38,7 @@ public class Tree_Tower : Base_Tower
     {
         // Treeの初期化コード
         // Debug.Log("Tree Tower Initialized");
+        absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
     void Update()
@@ -86,6 +88,8 @@ public class Tree_Tower : Base_Tower
         max_damage += 10;
         action_interval -= 0.1f;
 
+        // absorbableSqrDistance を更新
+        absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
     [ContextMenu("Sell")]
