@@ -6,7 +6,7 @@ using UnityEngine;
 public class Truck : Base_Enemy
 {
     // test
-    public Base_Tower target;
+    // public Base_Tower target;
 
     // health
     public float max_health;
@@ -27,6 +27,12 @@ public class Truck : Base_Enemy
 
     void Awake()
     {
+        // target = Find();
+        action_interval = Random.Range(1, 3);
+        action_range = 20;
+        max_health = Random.Range(1, 3);
+        current_health = max_health;
+        max_damage = Random.Range(1, 3);
         time = 0;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -53,10 +59,10 @@ public class Truck : Base_Enemy
 
     public override void Action(Base_Tower _target) // attack enemy
     {
-        // Debug.Log("Truck is attacking to " + _target.name);
+        Debug.Log("Truck is attacking to " + _target.name);
 
         // Co2 をだす処理
-        target.TakeDamage(max_damage);
+        _target.TakeDamage(max_damage);
     }
 
     public override void TakeDamage(float damage)
@@ -82,13 +88,11 @@ public class Truck : Base_Enemy
 
     public override Base_Tower Find()
     {
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        foreach (GameObject tower in towers)
+        GameObject tower = GameObject.Find("Tree_Tower");
+        Debug.Log(Vector3.Distance(tower.transform.position, transform.position) <= action_range);
+        if (Vector3.Distance(tower.transform.position, transform.position) <= action_range)
         {
-            if (Vector3.SqrMagnitude(tower.transform.position - transform.position) <= Mathf.Pow(action_range, 2))
-            {
-                return tower.GetComponent<Base_Tower>();
-            }
+            return tower.GetComponent<Base_Tower>();
         }
         return null;
     }

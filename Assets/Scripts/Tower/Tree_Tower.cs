@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tree_Tower : Base_Tower
 {
     // test
-    public Base_Enemy target;
+    // public Base_Enemy target;
     public float heal_value;
 
     // health
@@ -33,6 +33,15 @@ public class Tree_Tower : Base_Tower
     void Awake()
     {
         time = 0;
+        level = 1;
+        max_health = 100;
+        current_health = max_health;
+        max_damage = 10;
+        action_interval = 1;
+        action_range = 20;
+        heal_value = 0.1f;
+
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -54,6 +63,7 @@ public class Tree_Tower : Base_Tower
         }
         if (current_health <= 0)
         {
+            Debug.Log(current_health);
             Die();
         }
     }
@@ -61,10 +71,10 @@ public class Tree_Tower : Base_Tower
 
     public override void Action(Base_Enemy _target) // attack enemy
     {
-        // Debug.Log("Tree is attacking to " + _target.name);
+        Debug.Log("Tree is attacking to " + _target.name);
 
         // Co2 を吸収する処理
-        target.TakeDamage(max_damage);
+        _target.TakeDamage(max_damage);
         Heal(heal_value);
     }
 

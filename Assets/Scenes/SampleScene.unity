@@ -119,153 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &41456161
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 41456162}
-  - component: {fileID: 41456163}
-  m_Layer: 0
-  m_Name: Path_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &41456162
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41456161}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1144142594}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &41456163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41456161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Resolution: 20
-  m_Appearance:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    width: 2
-  m_Looped: 0
-  m_Waypoints:
-  - position: {x: 0, y: 0, z: 0}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: 0, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -5, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -10, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -15, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -15, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -19.5, y: 0, z: 20}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -24, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -24, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -29, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 55}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -67, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -72, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -72, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -67, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -57, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -53, y: 0, z: 44}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -41, y: 0, z: 44}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -41, y: 0, z: 26}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 26}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -58, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -105, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -110, y: 0, z: 23}
-    tangent: {x: 0, y: 0, z: 1}
-    roll: 0
-  - position: {x: -112, y: 0, z: 25}
-    tangent: {x: -1, y: 0, z: 0}
-    roll: 0
-  - position: {x: -115, y: 0, z: 25}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -120, y: 0, z: 30}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -120, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
 --- !u!1 &57342925
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,153 +242,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1885272d02befb3429e46bfb5a828167, type: 3}
---- !u!1 &651015358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 651015359}
-  - component: {fileID: 651015360}
-  m_Layer: 0
-  m_Name: Path_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &651015359
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651015358}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1144142594}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &651015360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651015358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Resolution: 20
-  m_Appearance:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    width: 2
-  m_Looped: 0
-  m_Waypoints:
-  - position: {x: 0, y: 0, z: 0}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: 0, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -5, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -10, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -15, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -15, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -19.5, y: 0, z: 20}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -24, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -24, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -29, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 55}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -67, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -72, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -72, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -67, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -57, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -53, y: 0, z: 44}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 40}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 35}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 26}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -58, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -105, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -110, y: 0, z: 23}
-    tangent: {x: 0, y: 0, z: 1}
-    roll: 0
-  - position: {x: -112, y: 0, z: 25}
-    tangent: {x: -1, y: 0, z: 0}
-    roll: 0
-  - position: {x: -115, y: 0, z: 25}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -120, y: 0, z: 30}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -120, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,131 +535,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1144142590
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1144142594}
-  - component: {fileID: 1144142593}
-  - component: {fileID: 1144142592}
-  - component: {fileID: 1144142591}
-  - component: {fileID: 1144142595}
-  m_Layer: 0
-  m_Name: SpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1144142591
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144142590}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1144142592
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144142590}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1144142593
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144142590}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1144142594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144142590}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.4, y: 0, z: -30}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1974422806}
-  - {fileID: 651015359}
-  - {fileID: 41456162}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1144142595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144142590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 890b5577888102f42a5229f6a46904b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn_interval: 5
-  enemyPath: Models
 --- !u!1 &1265307602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,153 +840,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1974422805
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1974422806}
-  - component: {fileID: 1974422807}
-  m_Layer: 0
-  m_Name: Path_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1974422806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974422805}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1144142594}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1974422807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974422805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Resolution: 20
-  m_Appearance:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    width: 2
-  m_Looped: 0
-  m_Waypoints:
-  - position: {x: 0, y: 0, z: 0}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: 0, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -5, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -10, y: 0, z: 50}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -15, y: 0, z: 45}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -15, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -19.5, y: 0, z: 20}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -24, y: 0, z: 25}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -24, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -29, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 55}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -67, y: 0, z: 55}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -72, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -72, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -67, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -57, y: 0, z: 72}
-    tangent: {x: 3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 67}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -53, y: 0, z: 44}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -65, y: 0, z: 44}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -65, y: 0, z: 26}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 26}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -53, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: -3}
-    roll: 0
-  - position: {x: -58, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -105, y: 0, z: 10}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 15}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -110, y: 0, z: 23}
-    tangent: {x: 0, y: 0, z: 1}
-    roll: 0
-  - position: {x: -105, y: 0, z: 25}
-    tangent: {x: -1, y: 0, z: 0}
-    roll: 0
-  - position: {x: -100, y: 0, z: 25}
-    tangent: {x: -3, y: 0, z: 0}
-    roll: 0
-  - position: {x: -100, y: 0, z: 30}
-    tangent: {x: 0, y: 0, z: 3}
-    roll: 0
-  - position: {x: -100, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 50}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
-  - position: {x: -110, y: 0, z: 60}
-    tangent: {x: 0, y: 0, z: 0}
-    roll: 0
 --- !u!1 &2036325610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +871,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3302562354486770142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6201740446244079548, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_Name
+      value: SpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533034235190709895, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 660abe343e833d74f8546f23c407e89f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1449,6 +940,6 @@ SceneRoots:
   - {fileID: 1721841560}
   - {fileID: 444026993}
   - {fileID: 1679089467}
-  - {fileID: 1144142594}
+  - {fileID: 3302562354486770142}
   - {fileID: 1520476692}
   - {fileID: 57342926}
