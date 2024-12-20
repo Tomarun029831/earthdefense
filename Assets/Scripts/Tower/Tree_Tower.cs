@@ -109,7 +109,7 @@ public class Tree_Tower : Base_Tower
     public override Base_Enemy Find()
     {
         Base_Enemy target = null;
-        // float targetPathPos = 0;
+        float targetPathPos = 0;
         // for (int i = 0; i < gameManager.enemyParent.childCount; i++)
         // {
         //     Transform enemy = gameManager.enemyParent.GetChild(i);

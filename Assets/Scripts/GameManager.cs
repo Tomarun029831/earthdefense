@@ -12,12 +12,23 @@ public class GameManager : MonoBehaviour
     public float phase_interval;
     public float preparation_time;
 
+    // time
     private float time;
+
+    // spawn
+    public float spawn_interval;
+    private SpawnManager spawnManager;
 
     void Awake()
     {
         current_phase = 0;
         time = 0;
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        enemyParent = GameObject.Find("EnemyParent").transform;
+        if (enemyParent == null)
+        {
+            enemyParent = new GameObject("EnemyParent").transform;
+        }
     }
 
     void Start()
