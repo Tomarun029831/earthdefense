@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : Base_Tower
+public class Tree_Tower : Base_Tower
 {
     // test
     public Base_Enemy target;
