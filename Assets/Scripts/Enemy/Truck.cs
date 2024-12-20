@@ -31,6 +31,7 @@ public class Truck : Base_Enemy
         time += Time.deltaTime;
         if (time >= action_interval)
         {
+            // null => Find() に変更
             Action(null);
             time = 0;
         }
@@ -68,5 +69,22 @@ public class Truck : Base_Enemy
     {
         // Debug.Log("Truck is dead");
         Destroy(gameObject);
+    }
+
+    public override Base_Tower Find()
+    {
+        Base_Tower target = null;
+        float targetPathPos = 0;
+        for (int i = 0; i < gameManager.enemyParent.childCount; i++)
+        {
+            Transform enemy = gameManager.enemyParent.GetChild(i);
+            float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
+            if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
+            {
+                target = enemy.GetComponent<Base_Tower>();
+                targetPathPos = enemyPathPos;
+            }
+        }
+        return target;
     }
 }

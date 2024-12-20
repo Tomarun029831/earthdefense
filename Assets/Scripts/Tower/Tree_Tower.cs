@@ -44,6 +44,7 @@ public class Tree_Tower : Base_Tower
         time += Time.deltaTime;
         if (time >= action_interval)
         {
+            // null => Find() に変更
             Action(null);
             time = 0;
         }
