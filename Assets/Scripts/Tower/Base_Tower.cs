@@ -20,6 +20,7 @@ abstract public class Base_Tower : MonoBehaviour
 
     abstract public void Action(Base_Enemy _target); // attack, buff, debuff, etc.
     abstract public void TakeDamage(float damage); // take damage
+    abstract public void Heal(float _value); // heal
     abstract public void Die(); // tower die
 
     abstract public void Upgrade(); // upgrade tower

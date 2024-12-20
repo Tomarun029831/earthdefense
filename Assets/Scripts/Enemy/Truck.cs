@@ -5,7 +5,7 @@ using UnityEngine;
 public class Truck : Base_Enemy
 {
     // test
-    // public Base_Tower target;
+    public Base_Tower target;
 
     // health
     public float max_health;
@@ -18,16 +18,12 @@ public class Truck : Base_Enemy
     public float action_interval;
     public float action_range;
 
-    // heal
-    public float heal_value;
-
     // time
     private float time = 0;
 
     void Start()
     {
-        // Treeの初期化コード
-        Debug.Log("Tree Tower Initialized");
+
     }
 
     // Update is called once per frame
@@ -39,29 +35,39 @@ public class Truck : Base_Enemy
             Action(null);
             time = 0;
         }
+        if (current_health <= 0)
+        {
+            Die();
+        }
     }
 
 
     public override void Action(Base_Tower _target) // attack enemy
     {
-        Debug.Log("Truck is attacking to " + _target.name);
+        // Debug.Log("Truck is attacking to " + _target.name);
 
         // Co2 をだす処理
-        _target.TakeDamage(max_damage);
+        target.TakeDamage(max_damage);
     }
 
     public override void TakeDamage(float damage)
     {
-        // Treeタワーがダメージを受けた時の処理を実装
-        Debug.Log($"Truck Tower took {damage} damage");
-
         current_health -= damage;
+    }
+
+    public override void Heal(float _value)
+    {
+        current_health += _value;
+        if (current_health > max_health)
+        {
+            current_health = max_health;
+        }
     }
 
 
     public override void Die()
     {
-        Debug.Log("Truck is dead");
-
+        // Debug.Log("Truck is dead");
+        Destroy(gameObject);
     }
 }
