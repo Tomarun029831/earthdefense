@@ -100,7 +100,7 @@ public class Tree_Tower : Base_Tower
         Destroy(gameObject);
     }
 
-    private Base_Enemy Find()
+    public override Base_Enemy Find()
     {
         Base_Enemy target = null;
         float targetPathPos = 0;

@@ -9,9 +9,11 @@ public abstract class Base_Enemy : MonoBehaviour
     // public float action_interval;
     // public float action_range;
 
-    public abstract void Action(Base_Tower _tower); // attack, buff, debuff, etc.
-    public abstract void TakeDamage(float damage); // take damage
-    public abstract void Heal(float _value); // heal
 
-    public abstract void Die(); // die
+    abstract public Base_Tower Find(); // find enemy
+    abstract public void Action(Base_Tower _tower); // attack, buff, debuff, etc.
+    abstract public void TakeDamage(float damage); // take damage
+    abstract public void Heal(float _value); // heal
+
+    abstract public void Die(); // die
 }
