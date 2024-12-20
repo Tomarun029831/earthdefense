@@ -311,6 +311,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 100014, guid: c2384f4f142bbcc4a95566c55927a024, type: 3}
+--- !u!1 &181213363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7505997080764058459, guid: 102e6d3bb4c259b4aa24ec15be1aaaa6, type: 3}
+  m_PrefabInstance: {fileID: 1520476692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &444026993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1014,7 +1019,7 @@ PrefabInstance:
     - target: {fileID: 6852357721103813350, guid: 102e6d3bb4c259b4aa24ec15be1aaaa6, type: 3}
       propertyPath: targetedObject
       value: 
-      objectReference: {fileID: 100000, guid: 22106dc63dce41746ad234a91af2d657, type: 3}
+      objectReference: {fileID: 181213363}
     - target: {fileID: 7505997080764058459, guid: 102e6d3bb4c259b4aa24ec15be1aaaa6, type: 3}
       propertyPath: m_IsActive
       value: 0
