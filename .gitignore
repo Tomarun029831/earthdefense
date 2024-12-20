@@ -77,3 +77,13 @@ crashlytics-build.properties
 #Text Mesh Pro
 /Assets/TextMesh Pro/
 Assets/Scenes/*.unity
+
+/Assets/AurynSky/
+/Assets/LowPolyEarth/
+/Assets/SimplePoly City - Low Poly Assets
+/Assets/VertexColorFarmAnimals
+Assets/AurynSky.meta
+Assets/LowPolyEarth.meta
+Assets/SimplePoly City - Low Poly Assets.meta
+Assets/VertexColorFarmAnimals.meta
+Assets/Scenes/SampleScene.unity
