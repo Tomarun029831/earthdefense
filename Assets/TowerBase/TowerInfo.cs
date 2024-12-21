@@ -34,9 +34,9 @@ public class TowerInfo : MonoBehaviour
 
     public void TryUpgrade()
     {
-        if (gameManager.clear_energy_points >= target.tower.upgrade_cost)
+        if (gameManager.clean_energy_points >= target.tower.upgrade_cost)
         {
-            gameManager.clear_energy_points -= target.tower.upgrade_cost;
+            gameManager.clean_energy_points -= target.tower.upgrade_cost;
             target.Upgrade();
             gameObject.SetActive(false);
         }

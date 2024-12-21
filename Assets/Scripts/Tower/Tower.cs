@@ -60,9 +60,9 @@ public class Tower : Base_Tower
     void Start()
     {
         absorbableSqrDistance = Mathf.Pow(action_range, 2);
-        if (gameManager.clear_energy_points >= build_cost)
+        if (gameManager.clean_energy_points >= build_cost)
         {
-            gameManager.clear_energy_points -= build_cost;
+            gameManager.clean_energy_points -= build_cost;
         }
         else
         {
@@ -109,40 +109,10 @@ public class Tower : Base_Tower
         current_health -= damage;
     }
 
-    // [ContextMenu("Upgrade")]
-    // public override void Upgrade()
-    // {
-    //     gameManager.clear_energy_points -= upgrade_cost;
-    //     // level++;
-    //     // max_health += 10;
-    //     // max_damage += 10;
-    //     // action_interval -= 0.1f;
-
-
-    //     if (level_prehub.Length >= level)
-    //     {
-
-    //         if (transform.childCount > 0)
-    //         {
-    //             Transform currentTower = transform.GetChild(0);
-    //             currentTower.gameObject.SetActive(false);
-    //         }
-
-
-    //         newTower = Instantiate(level_prehub[level - 1], transform.position, Quaternion.identity);
-    //         newTower.transform.SetParent(transform.parent);
-
-
-    //         newTower.hideFlags = HideFlags.HideInHierarchy;
-    //     }
-
-    //     absorbableSqrDistance = Mathf.Pow(action_range, 2);
-    // }
-
     [ContextMenu("Sell")]
     public override void Sell()
     {
-        gameManager.clear_energy_points += sell_cost;
+        gameManager.clean_energy_points += sell_cost;
         if (newTower != null)
         {
             Destroy(newTower);
@@ -177,9 +147,4 @@ public class Tower : Base_Tower
         return target;
     }
 
-    // public void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(transform.position, action_range);
-    // }
 }

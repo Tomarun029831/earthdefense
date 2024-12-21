@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public Transform parent_for_enemy;
 
     // point
-    public int clear_energy_points;
+    public int clean_energy_points;
 
     // spawn
     public float spawn_interval;
@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public float phase_interval;
     public float preparation_time;
 
+    // Earth health
+    public int earth_health;
+
     // time
     private float time;
 
@@ -40,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        clear_energy_points = 100;
+        clean_energy_points = 100;
         current_phase = 0;
         current_wave = 0;
         time = 0;
@@ -61,23 +64,36 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-        if (current_phase == 0) // zero phase is preparation phase
+        if (earth_health <= 0)
         {
-            if (time >= preparation_time)
-            {
-                StartCoroutine(StartPhase());
-                time = 0;
-            }
+            ShowResult();
         }
         else
         {
-            if (time >= phase_interval) // phase interval
+            time += Time.deltaTime;
+            if (current_phase == 0) // zero phase is preparation phase
             {
-                StartCoroutine(StartPhase());
-                time = 0;
+                if (time >= preparation_time)
+                {
+                    StartCoroutine(StartPhase());
+                    time = 0;
+                }
+            }
+            else
+            {
+                if (time >= phase_interval) // phase interval
+                {
+                    StartCoroutine(StartPhase());
+                    time = 0;
+                }
             }
         }
+    }
+
+    void ShowResult()
+    {
+
+        Time.timeScale = 0;
     }
 
     IEnumerator StartPhase()

@@ -15,9 +15,9 @@ public class TowerBuild : MonoBehaviour
 
     public void TryBuild(Tower tower)
     {
-        if (tower.build_cost <= gameManager.clear_energy_points)
+        if (tower.build_cost <= gameManager.clean_energy_points)
         {
-            gameManager.clear_energy_points -= tower.build_cost;
+            gameManager.clean_energy_points -= tower.build_cost;
             target.Build(tower.gameObject);
             gameObject.SetActive(false);
         }

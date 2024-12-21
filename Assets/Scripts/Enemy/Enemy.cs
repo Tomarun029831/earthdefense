@@ -83,6 +83,7 @@ public class Enemy : Base_Enemy
 
     public override void Die()
     {
+        gameManager.clean_energy_points += points;
         Destroy(gameObject);
     }
 
@@ -107,8 +108,9 @@ public class Enemy : Base_Enemy
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "Earth")
+        if (other.gameObject.layer == LayerMask.NameToLayer("Earth"))
         {
+            gameManager.earth_health -= 1;
             Die();
         }
     }
