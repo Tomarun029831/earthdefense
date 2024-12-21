@@ -30,6 +30,6 @@ public class TowerBase : MonoBehaviour
     public void Build(GameObject newTower)
     {
         tower = Instantiate(newTower, transform.position, Quaternion.identity, transform);
-        tower.AddComponent<Tree_Tower>().name = "Tree_Tower";
+        tower.AddComponent<Tree_Tower>().name = "tower";
     }
 }

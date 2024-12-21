@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Truck : Base_Enemy
@@ -27,11 +28,8 @@ public class Truck : Base_Enemy
 
     void Awake()
     {
-        gameObject.AddComponent<CinemachineDollyCart>().m_Path = GameObject.Find("Path_" + Random.Range(0, 2)).GetComponent<CinemachinePath>();
-        gameObject.GetComponent<CinemachineDollyCart>().m_Speed = Random.Range(1, 3);
-
         action_interval = 5;
-        action_range = 20;
+        action_range = 10;
         max_health = 5;
         current_health = max_health;
         max_damage = 1;
@@ -41,6 +39,7 @@ public class Truck : Base_Enemy
 
     void Start()
     {
+        gameObject.GetComponent<CinemachineDollyCart>().m_Speed = 3;
     }
 
     void Update()
@@ -48,7 +47,11 @@ public class Truck : Base_Enemy
         time += Time.deltaTime;
         if (time >= action_interval)
         {
-            Action(Find());
+            Base_Tower target = Find();
+            if (target != null)
+            {
+                Action(target);
+            }
             time = 0;
         }
         if (current_health <= 0)
@@ -60,8 +63,6 @@ public class Truck : Base_Enemy
 
     public override void Action(Base_Tower _target) // attack enemy
     {
-        Debug.Log(_target.name);
-        // Co2 をだす処理
         _target.TakeDamage(max_damage);
     }
 
@@ -84,18 +85,33 @@ public class Truck : Base_Enemy
     {
         Destroy(gameObject);
     }
+
     public override Base_Tower Find()
     {
-        Base_Tower[] towers = FindObjectsByType<Base_Tower>(FindObjectsSortMode.None);
+        Base_Tower[] towers = FindObjectsByType<Base_Tower>(FindObjectsSortMode.None);  // Base_Tower 型のオブジェクトを検索
         foreach (Base_Tower tower in towers)
         {
-            if ((tower.transform.position - transform.position).sqrMagnitude <= action_range * action_range)
+            // 高さ（y座標）を無視して、x と z 座標だけを使用
+            Vector3 towerPosition = tower.transform.position;
+            Vector3 truckPosition = transform.position;
+            towerPosition.y = 0;  // 高さを無視
+            truckPosition.y = 0;  // 高さを無視
+
+            if (Mathf.Abs(Vector3.Distance(tower.transform.position, gameObject.transform.position)) <= action_range)
             {
-                return tower;
+                return tower;  // 範囲内にあるタワーを返す
             }
         }
-        return null;
+        return null;  // 範囲内にタワーが見つからなかった場合
     }
 
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "Earth")
+        {
+            Die();
+        }
+    }
 
 }

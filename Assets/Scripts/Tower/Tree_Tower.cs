@@ -36,19 +36,15 @@ public class Tree_Tower : Base_Tower
         level = 1;
         max_health = 100;
         current_health = max_health;
-        max_damage = 10;
+        max_damage = 5;
         action_interval = 1;
-        action_range = 20;
+        action_range = 10;
         heal_value = 0.1f;
-
-
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
     {
-        // Treeの初期化コード
-        // Debug.Log("Tree Tower Initialized");
         absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
@@ -57,13 +53,16 @@ public class Tree_Tower : Base_Tower
         time += Time.deltaTime;
         if (time >= action_interval)
         {
-            // null => Find() に変更
-            Action(Find());
+            Base_Enemy target = Find();
+            if (target != null)
+            {
+                Debug.Log(target);
+                Action(target);
+            }
             time = 0;
         }
         if (current_health <= 0)
         {
-            Debug.Log(current_health);
             Die();
         }
     }
@@ -112,8 +111,6 @@ public class Tree_Tower : Base_Tower
 
     public override void Die()
     {
-        // Treeタワーが倒れた時の処理を実装
-        // Debug.Log("Tree Tower has been destroyed");
         Destroy(gameObject);
     }
 
@@ -121,11 +118,12 @@ public class Tree_Tower : Base_Tower
     {
         Base_Enemy target = null;
         float targetPathPos = 0;
-        for (int i = 0; i < gameManager.enemyParent.childCount; i++)
+        for (int i = 0; i < gameManager.parent_for_enemy.childCount; i++)
         {
-            Transform enemy = gameManager.enemyParent.GetChild(i);
+            Transform enemy = gameManager.parent_for_enemy.GetChild(i);
             float enemyPathPos = enemy.GetComponent<CinemachineDollyCart>().m_Position;
-            if ((transform.position - enemy.position).sqrMagnitude < absorbableSqrDistance && targetPathPos < enemyPathPos)
+
+            if (Mathf.Abs(Vector3.Distance(transform.position, enemy.position)) < action_range && targetPathPos < enemyPathPos)
             {
                 target = enemy.GetComponent<Base_Enemy>();
                 targetPathPos = enemyPathPos;
