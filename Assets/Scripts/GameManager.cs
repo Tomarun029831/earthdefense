@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+// phase, result
 
 public class GameManager : MonoBehaviour
 {
@@ -9,43 +12,39 @@ public class GameManager : MonoBehaviour
     // point
     public int clean_energy_points;
 
-    // spawn
-    public float spawn_interval;
+    // phase
+    public int phase;
+    public int max_phase;
+    public float phaseDuration;
+    public float phaseBreak;
+    public float preparation_time;
 
     // wave
-    [NonSerialized]
-    public int current_wave;
-    public int amount_of_wave; // amount of wave per phase
-    public int amount_of_enemy_w; // amount of enemy per wave
-    public float wave_interval; // interval between waves
+    public int wave;
+    public int waveTime;
+    public float waveBreak;
 
-    // phase
-    [NonSerialized]
-    public int current_phase;
-    public int max_phase;
-    public float phase_interval;
-    public float preparation_time;
+    // spawn
+    public float spawnBreak;
+    private SpawnManager spawnManager;
+
 
     // Earth health
     public int earth_health;
 
     // time
-    private float time;
-
-    // spawn
-    private SpawnManager spawnManager;
+    public float time;
 
     // enemy
     public string enemyPath;
-    private GameObject[] enemyPrefabs;
+    private GameObject[] enemyPrehubs;
 
-    private bool isPhaseRunning = false, isWaveRunning = false;
+    public GameObject successUI;
+    public GameObject failUI;
 
+    public GameObject skipButton;
     void Awake()
     {
-        clean_energy_points = 100;
-        current_phase = 0;
-        current_wave = 0;
         time = 0;
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         parent_for_enemy = GameObject.Find("EnemyParent")?.transform;
@@ -55,11 +54,12 @@ public class GameManager : MonoBehaviour
             parent_for_enemy = new GameObject("EnemyParent").transform;
         }
 
-        enemyPrefabs = LoadEnemies(enemyPath);
+        enemyPrehubs = LoadEnemies(enemyPath);
     }
 
     void Start()
     {
+
     }
 
     void Update()
@@ -71,101 +71,71 @@ public class GameManager : MonoBehaviour
         else
         {
             time += Time.deltaTime;
-            if (current_phase == 0) // zero phase is preparation phase
-            {
-                if (time >= preparation_time)
-                {
-                    StartCoroutine(StartPhase());
-                    time = 0;
-                }
-            }
-            else
-            {
-                if (time >= phase_interval) // phase interval
-                {
-                    StartCoroutine(StartPhase());
-                    time = 0;
-                }
-            }
+        }
+        if (phase == 2 && time > 135)
+        {
+            successUI.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
-    void ShowResult()
+    IEnumerator StartGame()
     {
-
-        Time.timeScale = 0;
+        yield return new WaitUntil(() => phase != 0);
+        while (phase < max_phase)
+        {
+            yield return StartCoroutine(StartPhase());
+            Debug.Log("bb");
+            yield return new WaitForSeconds(phaseBreak);
+        }
     }
 
     IEnumerator StartPhase()
     {
-        if (isPhaseRunning)
+        float phaseTime = Time.time;
+        time = 0;
+        while (Time.time - phaseTime < phaseDuration)
         {
-            yield break;
+            yield return StartWave();
+            yield return new WaitForSeconds(waveBreak);
         }
-        float s_time = time;
-
-        isPhaseRunning = true;
-
-        if (current_phase < max_phase)
-        {
-            Debug.Log("Phase " + current_phase + " started");
-            while (true)
-            {
-                if (time - s_time >= phase_interval)
-                {
-                    break;
-                }
-                StartCoroutine(StartWave());
-                yield return new WaitForSeconds(wave_interval);
-            }
-        }
-
-        isPhaseRunning = false;
+        Debug.Log("aa");
+        phase++;
+        wave = 0;
+        yield break;
     }
 
     IEnumerator StartWave()
     {
-        if (isWaveRunning)
+        for (int i = 0; i < waveTime; i++)
         {
-            yield break;
-        }
+            // Debug.Log($"phase:{phase}, wave:{wave}, i:{i}");
+            Instantiate(enemyPrehubs[UnityEngine.Random.Range(0, enemyPrehubs.Length)], parent_for_enemy);
 
-        isWaveRunning = true;
-
-        if (current_wave < amount_of_wave)
-        {
-            Debug.Log("Wave " + current_wave + " started");
-            for (int i = 0; i < amount_of_enemy_w * (current_wave + 1); i++)
+            if (i < waveTime - 1)
             {
-                spawnManager.Spawn(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)], parent_for_enemy);
-                yield return new WaitForSeconds(spawn_interval);
+                yield return new WaitForSeconds(spawnBreak);
             }
-            current_wave++;
         }
-        else
-        {
-            current_wave = 0;
-        }
-
-        isWaveRunning = false;
+        wave++;
+        yield break;
     }
-
-    [ContextMenu("check wave")]
-    void CheckWave()
+    void ShowResult()
     {
-        Debug.Log("current wave: " + current_wave);
+        failUI.SetActive(true);
+        Time.timeScale = 0;
     }
 
     [ContextMenu("Skip Preparation")]
-    void SkipPreparation()
+    public void SkipPreparation()
     {
-        if (current_phase == 0)
+        if (phase == 0)
         {
-            current_phase++;
-            StartCoroutine(StartPhase());
+            phase++;
+            skipButton.SetActive(false);
+            StartCoroutine(StartGame());
         }
     }
-
 
     GameObject[] LoadEnemies(string path)
     {
@@ -175,5 +145,12 @@ public class GameManager : MonoBehaviour
             path = path.TrimStart(s_trim.ToCharArray());
         }
         return Resources.LoadAll<GameObject>(path);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("InGameScene");
+        earth_health = 36;
+        Time.timeScale = 1;
     }
 }

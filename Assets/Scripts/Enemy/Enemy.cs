@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class Enemy : Base_Enemy
 {
+    // explosion
+    public bool isExplosion;
+    public GameObject explosion;
+
+    // speed
+    public float speed;
+
     // points
     public int points;
 
@@ -37,7 +44,9 @@ public class Enemy : Base_Enemy
 
     void Start()
     {
-        gameObject.GetComponent<CinemachineDollyCart>().m_Speed = 9;
+        CinemachineDollyCart dollyCart = gameObject.GetComponent<CinemachineDollyCart>();
+        dollyCart.m_Speed = speed;
+        dollyCart.m_Path = GameObject.Find("Path_" + Random.Range(0, 2)).GetComponent<CinemachinePath>();
     }
 
     void Update()
@@ -84,6 +93,10 @@ public class Enemy : Base_Enemy
     public override void Die()
     {
         gameManager.clean_energy_points += points;
+        if (isExplosion)
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 
