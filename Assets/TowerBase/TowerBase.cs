@@ -31,4 +31,11 @@ public class TowerBase : MonoBehaviour
     {
         tower = Instantiate(newTower, transform.position, Quaternion.identity, transform).GetComponent<Tower>();
     }
+
+    public void Upgrade()
+    {
+        GameObject newTower = Instantiate(tower.newTower, transform.position, Quaternion.identity, transform);
+        Destroy(tower.gameObject);
+        tower = newTower.GetComponent<Tower>();
+    }
 }

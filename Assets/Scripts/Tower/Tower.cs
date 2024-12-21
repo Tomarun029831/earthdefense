@@ -29,10 +29,10 @@ public class Tower : Base_Tower
 
     // level
     public int level;
-    public string load_path = "Models/Tower/Tree";
-    private GameObject[] level_prehub;
+    // public string load_path = "Models/Tower/Tree";
+    // private GameObject[] level_prehub;
 
-    private GameObject newTower;
+    public GameObject newTower;
 
     public Sprite icon;
     public string towerName;
@@ -41,6 +41,7 @@ public class Tower : Base_Tower
     private float time;
 
     // game manager
+    [NonSerialized]
     public GameManager gameManager;
 
     void Awake()
@@ -53,7 +54,6 @@ public class Tower : Base_Tower
         action_interval = 1;
         action_range = 10;
         heal_value = 0.1f;
-        level_prehub = Resources.LoadAll<GameObject>(load_path);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -82,10 +82,8 @@ public class Tower : Base_Tower
             }
             time = 0;
         }
-        Debug.Log("tree health: " + current_health);
         if (current_health <= 0)
         {
-            Debug.Log("Tree is dead");
             Die();
         }
     }
@@ -93,7 +91,6 @@ public class Tower : Base_Tower
 
     public override void Action(Base_Enemy _target) // attack enemy
     {
-        Debug.Log("tree Action");
         _target.TakeDamage(max_damage, gameObject);
         Heal(heal_value);
     }
@@ -109,38 +106,38 @@ public class Tower : Base_Tower
 
     public override void TakeDamage(float damage, GameObject _from)
     {
-        Debug.Log("tree Take Damage");
         current_health -= damage;
     }
-    [ContextMenu("Upgrade")]
-    public override void Upgrade()
-    {
-        gameManager.clear_energy_points -= upgrade_cost;
-        level++;
-        max_health += 10;
-        max_damage += 10;
-        action_interval -= 0.1f;
+
+    // [ContextMenu("Upgrade")]
+    // public override void Upgrade()
+    // {
+    //     gameManager.clear_energy_points -= upgrade_cost;
+    //     // level++;
+    //     // max_health += 10;
+    //     // max_damage += 10;
+    //     // action_interval -= 0.1f;
 
 
-        if (level_prehub.Length >= level)
-        {
+    //     if (level_prehub.Length >= level)
+    //     {
 
-            if (transform.childCount > 0)
-            {
-                Transform currentTower = transform.GetChild(0);
-                currentTower.gameObject.SetActive(false);
-            }
-
-
-            newTower = Instantiate(level_prehub[level - 1], transform.position, Quaternion.identity);
-            newTower.transform.SetParent(transform.parent);
+    //         if (transform.childCount > 0)
+    //         {
+    //             Transform currentTower = transform.GetChild(0);
+    //             currentTower.gameObject.SetActive(false);
+    //         }
 
 
-            newTower.hideFlags = HideFlags.HideInHierarchy;
-        }
+    //         newTower = Instantiate(level_prehub[level - 1], transform.position, Quaternion.identity);
+    //         newTower.transform.SetParent(transform.parent);
 
-        absorbableSqrDistance = Mathf.Pow(action_range, 2);
-    }
+
+    //         newTower.hideFlags = HideFlags.HideInHierarchy;
+    //     }
+
+    //     absorbableSqrDistance = Mathf.Pow(action_range, 2);
+    // }
 
     [ContextMenu("Sell")]
     public override void Sell()

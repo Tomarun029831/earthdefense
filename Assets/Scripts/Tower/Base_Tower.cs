@@ -25,6 +25,6 @@ abstract public class Base_Tower : MonoBehaviour
     abstract public void Heal(float _value); // heal
     abstract public void Die(); // tower die
 
-    abstract public void Upgrade(); // upgrade tower
+    // abstract public void Upgrade(); // upgrade tower
     abstract public void Sell(); // sell tower
 }

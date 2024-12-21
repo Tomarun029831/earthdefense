@@ -13,17 +13,17 @@ public class TowerInfo : MonoBehaviour
     public TMP_Text upgradeButtonText;
     public TMP_Text sellButtonText;
 
-    private Tower target;
+    private TowerBase target;
 
-    public void SetTower(Tower tower)
+    public void SetTower(TowerBase towerBase)
     {
         gameObject.SetActive(true);
-        target = tower;
-        icon.sprite = tower.icon;
-        nameText.text = $"{tower.towerName}\nLevel {tower.level}";
+        target = towerBase;
+        icon.sprite = towerBase.tower.icon;
+        nameText.text = $"{towerBase.tower.towerName}\nLevel {towerBase.tower.level}";
         upgradeDescription.text = "?????????";
-        upgradeButtonText.text = $"Upgrade\n{tower.upgrade_cost}$";
-        sellButtonText.text = $"Sell\n{tower.sell_cost}$";
+        upgradeButtonText.text = $"Upgrade\n{towerBase.tower.upgrade_cost}$";
+        sellButtonText.text = $"Sell\n{towerBase.tower.sell_cost}$";
     }
 
     void Update()
@@ -34,9 +34,9 @@ public class TowerInfo : MonoBehaviour
 
     public void TryUpgrade()
     {
-        if (gameManager.clear_energy_points >= target.upgrade_cost)
+        if (gameManager.clear_energy_points >= target.tower.upgrade_cost)
         {
-            gameManager.clear_energy_points -= target.upgrade_cost;
+            gameManager.clear_energy_points -= target.tower.upgrade_cost;
             target.Upgrade();
             gameObject.SetActive(false);
         }
@@ -45,7 +45,7 @@ public class TowerInfo : MonoBehaviour
 
     public void Sell()
     {
-        target.Sell();
+        target.tower.Sell();
         gameObject.SetActive(false);
     }
 }

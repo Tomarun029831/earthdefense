@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        towerInfo.SetTower(towerBase.tower);
+                        towerInfo.SetTower(towerBase);
                     }
                 }
             };
