@@ -4,10 +4,13 @@ using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Truck : Base_Enemy
+public class Enemy : Base_Enemy
 {
-    // test
-    // public Base_Tower target;
+    // points
+    public int points;
+
+    // bullet
+    public GameObject bullet;
 
     // health
     public float max_health;
@@ -28,18 +31,13 @@ public class Truck : Base_Enemy
 
     void Awake()
     {
-        action_interval = 5;
-        action_range = 10;
-        max_health = 5;
-        current_health = max_health;
-        max_damage = 1;
         time = 0;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
     {
-        gameObject.GetComponent<CinemachineDollyCart>().m_Speed = 3;
+        gameObject.GetComponent<CinemachineDollyCart>().m_Speed = 9;
     }
 
     void Update()
@@ -63,10 +61,12 @@ public class Truck : Base_Enemy
 
     public override void Action(Base_Tower _target) // attack enemy
     {
-        _target.TakeDamage(max_damage);
+        Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<CO2>().target = _target.transform.position;
+
+        _target.TakeDamage(max_damage, gameObject);
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, GameObject _from)
     {
         current_health -= damage;
     }
@@ -88,21 +88,20 @@ public class Truck : Base_Enemy
 
     public override Base_Tower Find()
     {
-        Base_Tower[] towers = FindObjectsByType<Base_Tower>(FindObjectsSortMode.None);  // Base_Tower 型のオブジェクトを検索
+        Base_Tower[] towers = FindObjectsByType<Base_Tower>(FindObjectsSortMode.None);
         foreach (Base_Tower tower in towers)
         {
-            // 高さ（y座標）を無視して、x と z 座標だけを使用
             Vector3 towerPosition = tower.transform.position;
             Vector3 truckPosition = transform.position;
-            towerPosition.y = 0;  // 高さを無視
-            truckPosition.y = 0;  // 高さを無視
+            towerPosition.y = 0;
+            truckPosition.y = 0;
 
             if (Mathf.Abs(Vector3.Distance(tower.transform.position, gameObject.transform.position)) <= action_range)
             {
-                return tower;  // 範囲内にあるタワーを返す
+                return tower;
             }
         }
-        return null;  // 範囲内にタワーが見つからなかった場合
+        return null;
     }
 
 

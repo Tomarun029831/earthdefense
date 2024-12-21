@@ -6,7 +6,7 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour
 {
     [NonSerialized]
-    public GameObject tower = null;
+    public Tower tower = null;
     public GameObject targetedObject;
     public bool Targeted
     {
@@ -29,7 +29,6 @@ public class TowerBase : MonoBehaviour
 
     public void Build(GameObject newTower)
     {
-        tower = Instantiate(newTower, transform.position, Quaternion.identity, transform);
-        tower.AddComponent<Tree_Tower>().name = "tower";
+        tower = Instantiate(newTower, transform.position, Quaternion.identity, transform).GetComponent<Tower>();
     }
 }

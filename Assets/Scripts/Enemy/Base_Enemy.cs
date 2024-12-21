@@ -12,7 +12,7 @@ public abstract class Base_Enemy : MonoBehaviour
 
     abstract public Base_Tower Find(); // find enemy
     abstract public void Action(Base_Tower _tower); // attack, buff, debuff, etc.
-    abstract public void TakeDamage(float damage); // take damage
+    abstract public void TakeDamage(float damage, GameObject _from); // take damage
     abstract public void Heal(float _value); // heal
 
     abstract public void Die(); // die

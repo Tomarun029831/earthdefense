@@ -1,16 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class Tree_Tower : Base_Tower
+public class Tower : Base_Tower
 {
-    // test
-    // public Base_Enemy target;
+    // cost
+    public int build_cost = 20;
+    public int sell_cost = 15;
+    public int upgrade_cost = 20;
+
+    // heal
     public float heal_value;
 
     // health
     public float max_health;
+    [NonSerialized]
     public float current_health;
 
     // damage
@@ -23,29 +29,45 @@ public class Tree_Tower : Base_Tower
 
     // level
     public int level;
+    public string load_path = "Models/Tower/Tree";
+    private GameObject[] level_prehub;
+
+    private GameObject newTower;
+
+    public Sprite icon;
+    public string towerName;
 
     // time
     private float time;
 
     // game manager
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     void Awake()
     {
         time = 0;
         level = 1;
-        max_health = 100;
+        max_health = 25;
         current_health = max_health;
         max_damage = 5;
         action_interval = 1;
         action_range = 10;
         heal_value = 0.1f;
+        level_prehub = Resources.LoadAll<GameObject>(load_path);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
     {
         absorbableSqrDistance = Mathf.Pow(action_range, 2);
+        if (gameManager.clear_energy_points >= build_cost)
+        {
+            gameManager.clear_energy_points -= build_cost;
+        }
+        else
+        {
+            Die();
+        }
     }
 
     void Update()
@@ -56,13 +78,14 @@ public class Tree_Tower : Base_Tower
             Base_Enemy target = Find();
             if (target != null)
             {
-                Debug.Log(target);
                 Action(target);
             }
             time = 0;
         }
+        Debug.Log("tree health: " + current_health);
         if (current_health <= 0)
         {
+            Debug.Log("Tree is dead");
             Die();
         }
     }
@@ -70,10 +93,8 @@ public class Tree_Tower : Base_Tower
 
     public override void Action(Base_Enemy _target) // attack enemy
     {
-        Debug.Log("Tree is attacking to " + _target.name);
-
-        // Co2 を吸収する処理
-        _target.TakeDamage(max_damage);
+        Debug.Log("tree Action");
+        _target.TakeDamage(max_damage, gameObject);
         Heal(heal_value);
     }
 
@@ -86,34 +107,61 @@ public class Tree_Tower : Base_Tower
         }
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, GameObject _from)
     {
+        Debug.Log("tree Take Damage");
         current_health -= damage;
     }
-
     [ContextMenu("Upgrade")]
     public override void Upgrade()
     {
+        gameManager.clear_energy_points -= upgrade_cost;
         level++;
         max_health += 10;
         max_damage += 10;
         action_interval -= 0.1f;
 
-        // absorbableSqrDistance を更新
+
+        if (level_prehub.Length >= level)
+        {
+
+            if (transform.childCount > 0)
+            {
+                Transform currentTower = transform.GetChild(0);
+                currentTower.gameObject.SetActive(false);
+            }
+
+
+            newTower = Instantiate(level_prehub[level - 1], transform.position, Quaternion.identity);
+            newTower.transform.SetParent(transform.parent);
+
+
+            newTower.hideFlags = HideFlags.HideInHierarchy;
+        }
+
         absorbableSqrDistance = Mathf.Pow(action_range, 2);
     }
 
     [ContextMenu("Sell")]
     public override void Sell()
     {
+        gameManager.clear_energy_points += sell_cost;
+        if (newTower != null)
+        {
+            Destroy(newTower);
+        }
         Destroy(gameObject);
     }
 
+    [ContextMenu("Die")]
     public override void Die()
     {
+        if (newTower != null)
+        {
+            Destroy(newTower);
+        }
         Destroy(gameObject);
     }
-
     public override Base_Enemy Find()
     {
         Base_Enemy target = null;
@@ -131,4 +179,10 @@ public class Tree_Tower : Base_Tower
         }
         return target;
     }
+
+    // public void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(transform.position, action_range);
+    // }
 }

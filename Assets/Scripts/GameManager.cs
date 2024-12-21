@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public Transform parent_for_enemy;
 
+    // point
+    public int clear_energy_points;
+
     // spawn
     public float spawn_interval;
 
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        clear_energy_points = 100;
         current_phase = 0;
         current_wave = 0;
         time = 0;

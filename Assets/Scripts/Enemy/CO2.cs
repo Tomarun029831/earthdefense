@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine.Utility;
 using UnityEngine;
 
 public class CO2 : MonoBehaviour
@@ -11,13 +12,15 @@ public class CO2 : MonoBehaviour
     private Vector3 initialPos;
     private float timer = 0;
 
-    void Start(){
+    void Start()
+    {
         initialPos = transform.position;
     }
 
-    void Update(){
+    void Update()
+    {
         timer += Time.deltaTime;
-        if(timer > duration) Destroy(gameObject);
+        if (timer > duration) Destroy(gameObject);
         transform.position = Vector3.Lerp(initialPos, target, timer / duration);
     }
 }
